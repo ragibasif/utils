@@ -1,31 +1,26 @@
 #include "utils.h"
-#include <stdbool.h>/* true, false, bool */
-#include <stdio.h> /*Includes the standard I/O library for functions like `printf`.*/
-#include <stdlib.h> /*Includes the standard library for functions like `malloc`, `free`, and `realloc`.*/
-#include <string.h> /*Includes the string manipulation library for functions like `memcpy`.*/
 
-static void utils_log_wrapper(const char *message, const char *file,
-                              const unsigned int line, const char *function) {
+void utils_log_wrapper(const char *message, const char *file,
+                       const unsigned int line, const char *function) {
 
-  printf("(%s%s%s:%u:%s%s) %s\n", UTILS_ANSI_MAGENTA, UTILS_ANSI_BOLD, file,
-         line, function, UTILS_ANSI_RESET, message);
+  printf("[%s%s%s%s:", UTILS_ANSI_RED, UTILS_ANSI_BOLD, file, UTILS_ANSI_RESET);
+  printf("%s%s%u%s:", UTILS_ANSI_GREEN, UTILS_ANSI_BOLD, line,
+         UTILS_ANSI_RESET);
+  printf("%s%s%s%s] ", UTILS_ANSI_YELLOW, UTILS_ANSI_BOLD, function,
+         UTILS_ANSI_RESET);
+  printf("%s%s%s%s\n", UTILS_ANSI_MAGENTA, UTILS_ANSI_BOLD, message,
+         UTILS_ANSI_RESET);
 }
 
 int main(int argc, char **argv) {
-
-  if (argc < 2) {
-    printf("argc: %d argv[0]: %s\n", argc, argv[0]);
-  } else {
-    int i;
-    for (i = 0; i < argc; i++) {
-      printf("argc: %d argv[%d]: %s\n", argc, i, argv[i]);
-    }
-  }
+  (void)argc;
+  (void)argv;
 
   int *p = (int *)malloc(5 + sizeof(int));
   printf("%p\n", (void *)p);
   free(p);
-  UTILS_LOG("hello");
+  utils_log_wrapper("utils_log_wrapper", __FILE__, __LINE__, __func__);
+  UTILS_LOG("UTILS_LOG");
 
   return 0;
 }

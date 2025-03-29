@@ -48,33 +48,29 @@ extern "C" {
 #define UTILS_SUM(a, b) (a + b)
 
 #define UTILS_PRINT_CHAR(x) printf("%c", x) // print char
-#define UTILS_PRINT_STR(x)                                                     \
-  printf("%s", x)                             // print string of characters
-                                              //
+#define UTILS_PRINT_STR(x) printf("%s", x)  // print string of characters
+
 #define UTILS_SCAN_INT(x) scanf("%d", &x)     // int
 #define UTILS_SCAN_SHORT(x) scanf("%hd", &x)  // short int
 #define UTILS_SCAN_LINT(x) scanf("%ld", &x)   // lont int
 #define UTILS_SCAN_LLINT(x) scanf("%lld", &x) // long long int
 #define UTILS_SCAN_OCT(x) scanf("%o", &x)     // octal
 #define UTILS_SCAN_HEX(x) scanf("%x", &x)     // hexadecimal
-#define UTILS_SCAN_UINT(x)                                                     \
-  scanf("%u", &x)                              // unsigned int
-                                               //
+#define UTILS_SCAN_UINT(x) scanf("%u", &x)    // unsigned int
+
 #define UTILS_PRINT_INT(x) printf("%d", x)     // int
 #define UTILS_PRINT_SHORT(x) printf("%hd", x)  // short int
 #define UTILS_PRINT_LINT(x) printf("%ld", x)   // lont int
 #define UTILS_PRINT_LLINT(x) printf("%lld", x) // long long int
 #define UTILS_PRINT_OCT(x) printf("%o", x)     // octal without leading zeros
 #define UTILS_PRINT_HEX(x) printf("%x", x)     // hexadecimal
-#define UTILS_PRINT_UINT(x)                                                    \
-  printf("%u", x)                              // unsigned int
-                                               //
+#define UTILS_PRINT_UINT(x) printf("%u", x)    // unsigned int
+
 #define UTILS_SCAN_FLOAT(x) scanf("%f", &x)    // float
 #define UTILS_SCAN_DOUBLE(x) scanf("%lf", &x)  // double
 #define UTILS_SCAN_LDOUBLE(x) scanf("%Lf", &x) // long double
-#define UTILS_SCAN_FLOATEXP(x)                                                 \
-  scanf("%e", &x)                               // floating point exponent
-                                                //
+#define UTILS_SCAN_FLOATEXP(x) scanf("%e", &x) // floating point exponent
+
 #define UTILS_PRINT_FLOAT(x) printf("%f", x)    // float
 #define UTILS_PRINT_DOUBLE(x) printf("%lf", x)  // double
 #define UTILS_PRINT_LDOUBLE(x) printf("%Lf", x) // long double
@@ -90,6 +86,9 @@ extern "C" {
   } while (0)
 
 #define UTILS_LOG(msg) utils_log_wrapper(msg, __FILE__, __LINE__, __func__)
+
+extern void utils_log_wrapper(const char *message, const char *file,
+                              const unsigned int line, const char *function);
 
 #ifdef __cplusplus
 }
